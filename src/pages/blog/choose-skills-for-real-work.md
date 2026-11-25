@@ -23,7 +23,9 @@ category: "工具整理"
 
 ## 最后装了哪些
 
-![面向实际 NPU 开发工作的五类 Skill，包括环境检查、算子调试、图模式、性能分析和模型迁移](/media/choose-skills-for-real-work/skill-map.svg)
+[![面向实际 NPU 开发工作的五类 Skill，包括环境检查、算子调试、图模式、性能分析和模型迁移](/media/choose-skills-for-real-work/skill-map.svg)](/media/choose-skills-for-real-work/skill-map.svg)
+
+点击图可查看原图。
 
 | 方向 | 数量 | 解决的问题 |
 |---|---:|---|
