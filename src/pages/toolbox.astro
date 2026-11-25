@@ -1,0 +1,5 @@
+---
+import Shell from '../layouts/Shell.astro';
+import skills from '../data/skills.json';
+---
+<Shell title="工具箱 · Runze Zhang" active="toolbox"><section class="page-intro wrap"><p class="eyebrow">A PERSONAL TOOLBOX</p><h1>工具有分工，<br />经验有去处。</h1><p>这里是我正在整理的 {skills.length} 个用户级 Skill。记录其用途，按任务选择，不追求把所有工具都装一遍。</p></section><section class="wrap toolbox"><div class="toolbox-note"><strong>这页公开能力目录。</strong><p>完整配置、环境约定和工作底稿保存在私有仓库。第三方 Skill 的实际使用仍需匹配对应环境与许可证。</p></div><div class="skill-list">{skills.map(skill => <div class="skill-item"><code>{skill.name}</code><p>{skill.description}</p></div>)}</div></section></Shell>

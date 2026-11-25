@@ -1,0 +1,15 @@
+---
+import Shell from './Shell.astro';
+const dateLabel = (value) => String(value).slice(0, 10).replaceAll('-', '.');
+const post = Astro.props.frontmatter;
+---
+<Shell title={`${post.title} · Runze Zhang`} description={post.description} active="blog">
+  <article class="article wrap-narrow">
+    <a class="breadcrumb" href="/blog/">所有文章</a>
+    <div class="eyebrow">{post.category} <span>／</span> <time datetime={post.date}>{dateLabel(post.date)}</time></div>
+    <h1>{post.title}</h1><p class="article-deck">{post.description}</p>
+    <div class="article-byline"><span class="author-avatar">R</span><span>Runze Zhang</span><div class="tags">{post.tags.map((tag: string) => <span>{tag}</span>)}</div></div>
+    <div class="prose"><slot /></div>
+    <aside class="article-end"><strong>记录到这里，工作还会继续。</strong><p>文中的判断以所列验证为边界。发现更好的做法，会继续补充到这份手记。</p><a href="https://github.com/Oliver-zrz/oliver-zrz.github.io">查看网站源代码</a></aside>
+  </article>
+</Shell>

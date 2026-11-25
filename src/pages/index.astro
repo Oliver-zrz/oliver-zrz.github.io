@@ -1,0 +1,12 @@
+---
+import Shell from '../layouts/Shell.astro';
+import {posts, dateLabel} from '../lib/posts';
+---
+<Shell>
+  <section class="hero wrap">
+    <div class="hero-copy"><p class="eyebrow">代码 · 工具 · 工作里的发现</p><h1>写代码，<br />也把问题<span class="accent">讲清楚。</span></h1><p class="hero-intro">这里记录我怎样搭建环境、组织工具、排查问题。<br class="desktop" />留住判断的依据，也留住下一次能直接用的做法。</p><div class="hero-actions"><a class="button" href="/blog/">阅读开发手记</a><a class="quiet-link" href="/toolbox/">看看我的工具箱</a></div><p class="hero-footnote">Runze Zhang <span>／</span> Personal engineering notebook</p></div>
+    <div class="hero-diagram"><div class="diagram-top"><span>我的工作如何留下来</span><span class="mono">WORKFLOW</span></div><div class="flow-node flow-primary"><span class="node-icon">{ }</span><div><strong>解决一个真实问题</strong><small>代码、尝试、验证与证据</small></div></div><div class="flow-connector"></div><div class="flow-node"><span class="node-icon">≡</span><div><strong>留下可复用的记录</strong><small>环境、决策、过程与结论</small></div></div><div class="flow-connector"></div><div class="flow-node"><span class="node-icon">◇</span><div><strong>写成清晰的图文</strong><small>说人话 · 技术图解</small></div></div><div class="diagram-bottom"><span>私有工作区</span><span class="boundary-line"></span><span>公开博客</span></div></div>
+  </section>
+  <section class="latest wrap"><div class="section-heading"><div><p class="eyebrow">NOTEBOOK</p><h2>最近写下的</h2></div><a href="/blog/">所有文章</a></div><div class="post-rows">{posts.map((post, index) => <a class="post-row" href={post.url}><div class="post-date"><time datetime={post.date}>{dateLabel(post.date)}</time><span>{post.category}</span></div><div class="post-row-body"><h3>{post.title}</h3><p>{post.description}</p><div class="tags">{post.tags.map((tag: string) => <span>{tag}</span>)}</div></div><span class="row-mark" aria-hidden="true">{index === 0 ? '✳' : '✧'}</span></a>)}</div></section>
+  <section class="workspace-note wrap"><div class="note-label">一个持续整理的工作台</div><p>Skill 是工具，记录是过程。<br />真正想留下的，是<strong>为什么这样做，以及怎么确认它做对了。</strong></p><a href="/about/">关于这份手记</a></section>
+</Shell>

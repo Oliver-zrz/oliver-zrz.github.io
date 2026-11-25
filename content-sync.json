@@ -1,0 +1,10 @@
+{
+  "source": "dev-home publication allowlist",
+  "files": {
+    "public/media/a-portable-development-home/development-home.svg": "07f195f2a84345d77cad4575c38936705ae48ece65494eb5278ce64481e7f463",
+    "src/pages/blog/a-portable-development-home.md": "238edfd1e668f2c51d2dda2c9fe44ba1b5b2ce932ed9c0d8eddc94e2e8fbd0f7",
+    "public/media/choose-skills-for-real-work/skill-map.svg": "e915b6a286ead1157b6c25f2a29647ef3adbd5d7751e848cd3b9e511bf6bcfd5",
+    "src/pages/blog/choose-skills-for-real-work.md": "2f4d8138451684c368b6bc8b820fb16df7d8b6f91558b661e080242e3009b831",
+    "src/data/skills.json": "07771f80215bae0bede2a47c632943f79a81e86707dcea19796f023dc4a0ef94"
+  }
+}

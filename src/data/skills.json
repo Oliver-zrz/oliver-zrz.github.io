@@ -1,0 +1,94 @@
+[
+  {
+    "name": "ascendc-env-check",
+    "description": "Ascend C 算子开发环境检查技能。用于：(1) 通过 npu-smi 查询 NPU 设备信息（设备列表、状态、资源使用），(2) 检查 CANN 环境配置（CANN Toolkit、Ops、自定义算子包），(3) 验证开发依赖是否完整，(4) 运行时检测当前设备 NPU 架构。触发关键词：环境检查、NPU设备、npu-smi、CANN安装、设备查询、资源监控、检查CANN环境变量、NPU架构、npu arch。"
+  },
+  {
+    "name": "ascendc-operator-precision-debug",
+    "description": "AscendC 算子精度问题调试与根因定位。当算子精度测试失败（allclose 不通过、结果偏差、输出全零/NaN 等）时使用。流程：误差分布分析 → 代码易错点审查 → 实验隔离 → printf/DumpTensor 插桩 → 修复验证。关键词：精度调试、精度问题、结果不一致、误差定位、allclose 失败、输出偏差、NaN、全零、precision debug。"
+  },
+  {
+    "name": "ascendc-runtime-debug",
+    "description": "Ascend C 算子运行时错误调试技能。用于处理算子运行时问题：(1) aclnn 返回错误码（161xxx/361xxx/561xxx，包括环境配置、Tiling、Kernel 查找等错误），(2) 需要解析 plog 日志定位问题。触发关键词：运行时错误、错误码、Tiling错误、Kernel查找失败、环境变量、plog。"
+  },
+  {
+    "name": "community-pr-test-tracking",
+    "description": "Track and test community PyTorch PRs on NPU. Use when the user asks to check community follow-up, community case tracking, follow PyTorch PR tests, or run community tests by PR number. Fetches PR diff from GitHub, extracts test files and test cases, injects the NPU adaptation snippet, runs tests, and records results. Does not accept SKIP as PASS."
+  },
+  {
+    "name": "diagram-design",
+    "description": "设计技术架构图、数据流、流程图、时序图、状态图、ER 和依赖关系图，支持 SVG、离线 HTML 及 Excalidraw 可编辑文件。用于“画架构图、把流程画清楚、重绘图解、生成 excalidraw”；简单对话说明优先 Mermaid，统计图表使用数据绘图库，照片插画使用图像工具。"
+  },
+  {
+    "name": "gen-torch-npu-api-ut",
+    "description": "为 torch_npu（PTA）场景生成与 ascend_pytorch/test 风格一致的 API 功能 UT（unittest + TestCase，禁止 pytest）。 当用户要求生成 torch_npu API 功能用例、PTA API UT、NPU 适配层 torch API 测试或图模式 UT 时触发。 Use when generating torch_npu functional unit tests, PTA API tests, NPU-patched torch API UT, or graph-mode UT."
+  },
+  {
+    "name": "hccl-env-check",
+    "description": "触发：在 HCCL 算子开发、构建或测试前，需要只读检查 HCCL/HCOMM 仓库、CANN 路径和环境变量是否满足调用方约束时使用；只读输出 READY/NOT_READY、检查证据和缺项。"
+  },
+  {
+    "name": "migration-ascend-torchnpu-skills-environment-setup",
+    "description": "Provides detailed procedures for setting up Ascend NPU development environment. Invoke when installing Ascend drivers, CANN toolkit, torch\\_npu, or resolving environment compatibility issues."
+  },
+  {
+    "name": "migration-ascend-torchnpu-skills-migration-execution",
+    "description": "Provides step-by-step code migration procedures from GPU/CPU to Ascend NPU. Invoke when performing actual code adaptation, interface replacement, or debugging NPU compatibility issues."
+  },
+  {
+    "name": "migration-ascend-torchnpu-skills-torch-npu-reference",
+    "description": "Provides torch\\_npu API compatibility reference and interface mapping knowledge. Invoke when checking NPU interface support, finding equivalent replacements, or resolving torch\\_npu compatibility issues."
+  },
+  {
+    "name": "migration-ascend-torchnpu-skills",
+    "description": "Guides migration of traditional models from CPU/GPU to Ascend NPU. Invoke when user needs to adapt PyTorch code for Ascend devices, set up NPU environment, or verify migration correctness."
+  },
+  {
+    "name": "npu-arch",
+    "description": "Ascend NPU 架构知识查询技能。通过芯片型号映射、架构代际划分和 archXX 特性说明，帮助判断目标平台能力、特性支持与条件编译策略。当需要确认芯片型号、NpuArch/SocVersion、架构差异、特性支持或编译分支条件时使用。"
+  },
+  {
+    "name": "npu-smi",
+    "description": "Huawei Ascend NPU npu-smi command reference. Use for device queries (health, temperature, power, memory, processes, ECC), configuration (thresholds, modes, fan), firmware upgrades (MCU, bootloader, VRD), virtualization (vNPU), and certificate management."
+  },
+  {
+    "name": "ops-precision-standard",
+    "description": "算子精度标准。描述 Ascend C 算子各种 dtype 输出对应的精度比对标准(混合容差 atol/rtol)。当需要(1)评估算子精度是否达标,(2)编写 ST 测试验证精度,(3)处理 FP16/FP32/BF16 等不同数据类型精度问题,(4)确认算子精度验收标准时触发。"
+  },
+  {
+    "name": "profiling-analysis-communication",
+    "description": "Skill for analyzing communication performance bottlenecks and detecting slow/fast rank issues in Ascend NPU systems. Use this skill whenever you need to analyze communication efficiency, data transfer bottlenecks, or identify slow/fast rank problems using profiling data."
+  },
+  {
+    "name": "profiling-analysis-computing",
+    "description": "用于分析Ascend NPU计算性能瓶颈：高耗时算子筛选、指令占比透视、形状解析，以及对 kernel_details.csv 中 aic_mac_ratio≥80% 的算力瓶颈算子做 Roofline 理论/实际耗时核对并给出是否需优化与排查方向。当用户提到计算瓶颈、算子分析、aic_mac_ratio、理论耗时、Roofline、kernel_details 算力核对时使用。"
+  },
+  {
+    "name": "profiling-analysis-hostbound",
+    "description": "分析MindStudio Insight采集的profiling数据识别快慢卡，以及分析系统trace文件识别Host侧进程性能问题。当用户需要分析NPU卡间性能差异或Host侧进程瓶颈时调用。"
+  },
+  {
+    "name": "profiling-analysis-roofline",
+    "description": "对 Ascend profiler 的 kernel_details.csv 做算力瓶颈 Roofline 核对：筛选 aic_mac_ratio≥80% 的算子，比较理论耗时与实际耗时，判断是否需要优化并给出排查方向。当用户提到 Roofline、aic_mac_ratio、理论耗时、算力瓶颈核对、kernel_details 峰值对比时使用。"
+  },
+  {
+    "name": "profiling-analysis",
+    "description": "华为昇腾NPU性能分析技能集，**当用户提供Profiling文件或目录路径时必须使用**，用于分析Profiling数据识别计算、通信、下发等性能瓶颈，支持step_trace_time.csv、op_statistic.csv、kernel_details.csv等多种数据格式，提供完整的性能分析流程和优化建议。"
+  },
+  {
+    "name": "shuorenhua",
+    "description": "中文优先的自然写作、审稿和去 AI 味。用于“说人话、去套话、别像 AI、保留我的语气”以及邮件、周报、技术文档的自然化改写；支持英文和只标问题。保留事实、术语、条件与责任主体，不用于判断作者身份或预测 AI 检测分数。"
+  },
+  {
+    "name": "torch-npugraph-ex-knowledge",
+    "description": "npugraph_ex（aclgraph）模式使用指南。采用 Capture & Replay 方式将算子任务下沉至 Device 执行，减少 Host 调度开销，适用于固定 shape 在线推理低延迟场景。涵盖模式配置、FX Pass、编译缓存、多流并行、内存复用、静态 Kernel 编译、限核、性能优化、调试定位、自定义算子入图等。关键词：npugraph_ex、aclgraph、backend=\\\"npugraph_ex\\\"、capture、replay、reduce-overhead、config.aclgraph_config。"
+  },
+  {
+    "name": "torch-npugraph-ex-template",
+    "description": "npugraph_ex 模式的 MRE（最小可复现示例）代码模板。包含标准 npugraph_ex 编译模板和 npugraph_ex 编译缓存（cache_compile）模板。触发：当用户需要从零生成 npugraph_ex 模式代码、做概念解释、对比分析或配置指导时加载。"
+  },
+  {
+    "name": "work-journal",
+    "description": "记录开发、调试、环境搭建与技术研究的实际过程，或把已有工作整理成带图解的博客。用于“记录这次工作、整理开发日志、把问题解决过程写成博客、同步个人博客”；使用本机 dev-home 私有仓库，按明确请求导出公开文章，不用于普通问答或自动采集完整会话。"
+  }
+]

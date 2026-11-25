@@ -1,0 +1,21 @@
+---
+import Shell from '../../layouts/Shell.astro';
+import {posts, dateLabel} from '../../lib/posts';
+const tags = [...new Set(posts.flatMap(p => p.tags))];
+---
+<Shell title="文章 · Runze Zhang" active="blog"><section class="page-intro wrap"><p class="eyebrow">THE NOTEBOOK</p><h1>开发手记</h1><p>从一个具体问题出发，写下过程、证据和能复用的做法。</p></section><section class="wrap archive"><label class="search-box"><span>搜索文章</span><input type="search" id="search" placeholder="试试 Skill、迁移、工作记录……" autocomplete="off" /></label><div class="tag-filter" aria-label="按标签筛选"><button class="selected" data-tag="" aria-pressed="true">全部</button>{tags.map(tag => <button data-tag={tag} aria-pressed="false">{tag}</button>)}</div><p class="result-count" id="result-count" aria-live="polite">共 {posts.length} 篇文章</p><div class="post-rows">{posts.map(post => <a class="post-row searchable" href={post.url} data-search={`${post.title} ${post.description} ${post.tags.join(' ')}`.toLowerCase()} data-tags={JSON.stringify(post.tags)}><div class="post-date"><time datetime={post.date}>{dateLabel(post.date)}</time><span>{post.category}</span></div><div class="post-row-body"><h2>{post.title}</h2><p>{post.description}</p><div class="tags">{post.tags.map((tag: string) => <span>{tag}</span>)}</div></div></a>)}</div><p id="empty-state" hidden>没有找到匹配的文章，换个关键词试试。</p></section></Shell>
+<script>
+  let selected = '';
+  const input = document.querySelector<HTMLInputElement>('#search')!;
+  const rows = [...document.querySelectorAll<HTMLAnchorElement>('.searchable')];
+  const filter = () => {
+    const query = input.value.trim().toLowerCase(); let count = 0;
+    rows.forEach(row => { const show = row.dataset.search!.includes(query) && (!selected || JSON.parse(row.dataset.tags!).includes(selected)); row.hidden = !show; if(show) count++; });
+    document.querySelector('#result-count')!.textContent = `共 ${count} 篇文章`;
+    (document.querySelector('#empty-state') as HTMLElement).hidden = count !== 0;
+  };
+  input.addEventListener('input', filter);
+  document.querySelectorAll<HTMLButtonElement>('[data-tag]').forEach(button => button.addEventListener('click', () => {
+    selected = button.dataset.tag || ''; document.querySelectorAll('[data-tag]').forEach(item => { const current = (item as HTMLElement).dataset.tag === selected; item.classList.toggle('selected', current); item.setAttribute('aria-pressed', String(current)); }); filter();
+  }));
+</script>

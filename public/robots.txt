@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://oliver-zrz.github.io/sitemap.xml
