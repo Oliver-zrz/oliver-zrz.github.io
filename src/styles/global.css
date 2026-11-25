@@ -64,7 +64,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .monogram { font-family: Georgia, serif; font-size: 42px; font-weight: 400; color: var(--accent); letter-spacing: -3px; }
 .wordmark small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; letter-spacing: .15em; margin-top: 3px; }
 .site-header nav { display: flex; align-items: center; gap: 28px; }
-.site-header nav > a { font-size: 14px; color: var(--muted); padding: 9px 0; border-bottom: 1px solid transparent; }
+.site-header nav > a { font-size: 14px; color: var(--muted); padding: 9px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
 .site-header nav > a:hover, .site-header nav > a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
 .theme-toggle { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); background: transparent; padding: 0; }
 .theme-toggle:hover { color: var(--ink); background: var(--tint); }
@@ -227,8 +227,8 @@ html[data-theme="dark"] .flow-primary .node-icon { color: var(--bg); }
   .prose h2 { font-size: 25px; }
 }
 @media (max-width: 420px) {
-  .wordmark { font-size: 14px; gap: 9px; }
-  .monogram { font-size: 34px; }
+  .wordmark { font-size: 13px; gap: 7px; }
+  .monogram { font-size: 30px; }
   .wordmark small { font-size: 12px; letter-spacing: 0; }
   .site-header { gap: 8px; }
   .site-header nav { gap: 10px; }
