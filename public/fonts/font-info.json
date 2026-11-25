@@ -1,0 +1,27 @@
+{
+  "family": "Noto Sans SC",
+  "css_alias": "Runze Sans",
+  "license": "SIL OFL 1.1",
+  "source_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf",
+  "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/OFL.txt",
+  "source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+  "weight_range": [
+    400,
+    600
+  ],
+  "coverage": "Latin, GB2312 and current published site text; system fallback for other glyphs",
+  "files": [
+    {
+      "file": "runze-sans-latin.woff2",
+      "bytes": 38624,
+      "characters": 408,
+      "sha256": "f689286241f7ef34870a5103c6e4cf7e3a995935dbd8b1fbe6188f0a63c1cada"
+    },
+    {
+      "file": "runze-sans-cjk.woff2",
+      "bytes": 1827220,
+      "characters": 7883,
+      "sha256": "b1a230a55a770be82fe2d6a453432ac6b409d6895cc872f89a0a263a3b7b40a8"
+    }
+  ]
+}

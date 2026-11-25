@@ -8,7 +8,7 @@ const headings = (Astro.props.headings || []).filter((heading: {depth: number}) 
   <div class="article-shell">
   <article class="article">
     <a class="breadcrumb" href="/blog/">文章目录</a>
-    <div class="eyebrow">{post.category} <span>／</span> <time datetime={post.date}>{dateLabel(post.date)}</time></div>
+    <div class="eyebrow"><span class="post-category">{post.category}</span> <span>／</span> <time datetime={post.date}>{dateLabel(post.date)}</time></div>
     <h1>{post.title}</h1><p class="article-deck">{post.description}</p>
     <div class="article-byline"><span class="author-avatar">R</span><span>Runze Zhang</span><div class="tags">{post.tags.map((tag: string) => <span>{tag}</span>)}</div></div>
     {headings.length > 1 && <details class="mobile-toc"><summary>文章目录</summary><ol>{headings.map((heading: {slug: string; text: string}) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol></details>}
