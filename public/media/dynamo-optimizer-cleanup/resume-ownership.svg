@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700" role="img" aria-labelledby="resume-title resume-desc">
+<title id="resume-title">让 Tensor 归属跨过 graph break</title><desc id="resume-desc">旧机制只在优化器初始化所在捕获上下文登记清理。新机制传递弱归属元数据，让恢复图按实际属性和参数列表注册自己的清理。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#68768e"/></marker></defs>
+<rect width="100%" height="100%" fill="#fbfcfe" rx="18"/>
+<g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" fill="#25334b">
+<text x="38" y="49" font-size="29" font-weight="600" fill="#4653ad">让 Tensor 归属跨过 graph break</text>
+<rect x="28" y="88" width="944" height="242" rx="14" fill="#fcf5f6" stroke="#e6cdd3" stroke-width="1.5"/>
+<text x="52" y="127" font-size="24" font-weight="600" fill="#9c4355">旧机制：清理注册留在前段</text>
+<rect x="52" y="151" width="240" height="114" rx="14" fill="#ffffff" stroke="#d8deeb" stroke-width="1.5"/>
+<text x="72" y="183" font-size="23" font-weight="600" fill="#25334b">优化器专门处理</text>
+<text x="72" y="216" font-size="21" font-weight="400" fill="#536379">_init_group()</text>
+<text x="72" y="245" font-size="21" font-weight="400" fill="#536379">登记当段属性名</text>
+<path d="M 304 207 H 359" fill="none" stroke="#68768e" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="372" y="151" width="240" height="114" rx="14" fill="#ffffff" stroke="#d8deeb" stroke-width="1.5"/>
+<text x="394" y="188" font-size="24" font-weight="600" fill="#25334b">graph break</text>
+<text x="394" y="229" font-size="21" font-weight="400" fill="#536379">执行后继续捕获</text>
+<path d="M 624 207 H 679" fill="none" stroke="#68768e" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="692" y="151" width="254" height="114" rx="14" fill="#ffffff" stroke="#ddbdc6" stroke-width="1.5"/>
+<text x="710" y="183" font-size="22" font-weight="600" fill="#25334b">恢复图保存同一 p</text>
+<text x="710" y="222" font-size="21" font-weight="400" fill="#9c4355">缺少对应清理注册</text>
+<text x="52" y="304" font-size="22" font-weight="400" fill="#9c4355">优化器销毁 → 恢复图仍可能引用 p</text>
+<rect x="28" y="356" width="944" height="314" rx="14" fill="#f1f7f5" stroke="#c6dcd3" stroke-width="1.5"/>
+<text x="52" y="398" font-size="24" font-weight="600" fill="#246653">修复后：每张图处理自己的实际引用</text>
+<rect x="52" y="423" width="240" height="114" rx="14" fill="#ffffff" stroke="#d8deeb" stroke-width="1.5"/>
+<rect x="372" y="423" width="240" height="114" rx="14" fill="#ffffff" stroke="#d8deeb" stroke-width="1.5"/>
+<rect x="692" y="423" width="254" height="114" rx="14" fill="#ffffff" stroke="#d8deeb" stroke-width="1.5"/>
+<text x="72" y="459" font-size="23" font-weight="600" fill="#25334b">记录 Tensor 归属</text>
+<text x="72" y="500" font-size="21" font-weight="400" fill="#536379">优化器 → Tensor</text>
+<path d="M 304 479 H 359" fill="none" stroke="#68768e" stroke-width="2.2" marker-end="url(#arrow)"/>
+<text x="392" y="459" font-size="23" font-weight="600" fill="#25334b">resume 元数据</text>
+<text x="392" y="500" font-size="20" font-weight="400" fill="#536379">弱引用记录跨段传递</text>
+<path d="M 624 479 H 679" fill="none" stroke="#68768e" stroke-width="2.2" marker-end="url(#arrow)"/>
+<text x="710" y="459" font-size="23" font-weight="600" fill="#25334b">恢复图逐项匹配</text>
+<text x="710" y="500" font-size="21" font-weight="400" fill="#536379">后端处理后注册清理</text>
+<text x="52" y="589" font-size="22" font-weight="600" fill="#246653">相关生命周期结束</text>
+<text x="52" y="627" font-size="23" font-weight="400" fill="#246653">→ 移除图属性引用，并清空对应参数槽位</text>
+</g></svg>

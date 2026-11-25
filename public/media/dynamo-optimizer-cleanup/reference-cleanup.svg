@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="690" viewBox="0 0 1000 690" role="img" aria-labelledby="cleanup-title cleanup-desc">
+<title id="cleanup-title">清理引用，保留其他参数的槽位</title><desc id="cleanup-desc">优化器 A 销毁，B 仍存活时，只移除图对 p_a 的引用，并把原列表的 p_a 槽位置为 None；p_b 和索引 1 不变。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#68768e"/></marker></defs>
+<rect width="100%" height="100%" fill="#fbfcfe" rx="18"/>
+<g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" fill="#25334b">
+<text x="38" y="49" font-size="29" font-weight="600" fill="#4653ad">清理引用，保留其他参数的槽位</text>
+<text x="38" y="88" font-size="22" font-weight="400" fill="#536379">例：A 已销毁，B 仍存活；两者的参数不同</text>
+<rect x="28" y="116" width="450" height="469" rx="14" fill="#fcf5f6" stroke="#e6cdd3" stroke-width="1.5"/>
+<text x="50" y="155" font-size="23" font-weight="600" fill="#9c4355">清理前：两处都引用 p_a</text>
+<rect x="50" y="179" width="406" height="135" rx="14" fill="#ffffff" stroke="#d8deeb" stroke-width="1.5"/>
+<text x="70" y="214" font-size="23" font-weight="600" fill="#25334b">GraphModule 的属性</text>
+<text x="70" y="253" font-size="22" font-weight="400" fill="#9c4355">param_a → p_a</text>
+<text x="70" y="289" font-size="22" font-weight="400" fill="#246653">param_b → p_b</text>
+<text x="50" y="358" font-size="22" font-weight="600" fill="#25334b">运行函数保存的原参数列表</text>
+<rect x="66" y="384" width="178" height="83" rx="14" fill="#f4f5fb" stroke="#d8deeb" stroke-width="1.5"/>
+<text x="117" y="436" font-size="26" font-weight="600" fill="#9c4355">p_a</text>
+<text x="111" y="501" font-size="21" font-weight="400" fill="#536379">索引 0</text>
+<rect x="260" y="384" width="178" height="83" rx="14" fill="#e6f3ed" stroke="#d8deeb" stroke-width="1.5"/>
+<text x="311" y="436" font-size="26" font-weight="600" fill="#246653">p_b</text>
+<text x="305" y="501" font-size="21" font-weight="400" fill="#536379">索引 1</text>
+<text x="50" y="551" font-size="21" font-weight="400" fill="#536379">列表是强引用的另一来源</text>
+<rect x="522" y="116" width="450" height="469" rx="14" fill="#f1f7f5" stroke="#c6dcd3" stroke-width="1.5"/>
+<text x="544" y="155" font-size="23" font-weight="600" fill="#246653">清理后：只保留 B 的引用</text>
+<rect x="544" y="179" width="406" height="135" rx="14" fill="#ffffff" stroke="#d8deeb" stroke-width="1.5"/>
+<text x="564" y="214" font-size="23" font-weight="600" fill="#25334b">GraphModule 的属性</text>
+<text x="564" y="253" font-size="22" font-weight="400" fill="#9c4355">param_a 已移除</text>
+<text x="564" y="289" font-size="22" font-weight="400" fill="#246653">param_b → p_b</text>
+<text x="544" y="358" font-size="22" font-weight="600" fill="#25334b">运行函数保存的原参数列表</text>
+<rect x="560" y="384" width="178" height="83" rx="14" fill="#f4f5fb" stroke="#d8deeb" stroke-width="1.5"/>
+<text x="611" y="436" font-size="26" font-weight="600" fill="#9c4355">None</text>
+<text x="605" y="501" font-size="21" font-weight="400" fill="#536379">索引 0</text>
+<rect x="754" y="384" width="178" height="83" rx="14" fill="#e6f3ed" stroke="#d8deeb" stroke-width="1.5"/>
+<text x="805" y="436" font-size="26" font-weight="600" fill="#246653">p_b</text>
+<text x="799" y="501" font-size="21" font-weight="400" fill="#536379">索引 1</text>
+<text x="544" y="551" font-size="21" font-weight="400" fill="#536379">原列表就地修改，索引不移动</text>
+<text x="38" y="631" font-size="22" font-weight="400" fill="#536379">改列表副本无法解除原引用；整表 clear() 会影响仍活着的 B。</text>
+</g></svg>

@@ -7,6 +7,10 @@
     "public/media/triton-ex-cache-reuse/cache-paths.svg": "0c9bf3ee215484ab9440c2931f1d4ec63674ca07663a97880e890137cf5fb70a",
     "public/media/triton-ex-cache-reuse/bundle-winners.svg": "ada7ca99c3da9fff492f9fda6551a383760d40b26df8ea82c80e3400fc2dc934",
     "public/media/triton-ex-cache-reuse/static-restore.svg": "bce8c3f9321d719250f46a34d6328c480d16882ff1ec73b9f03f89967b3448ef",
-    "src/pages/blog/triton-ex-cache-reuse.md": "0580dd9816b9149d9cdc2363bc124250deb754cf6b4e0b5817c651e6b60b91fd"
+    "src/pages/blog/triton-ex-cache-reuse.md": "0580dd9816b9149d9cdc2363bc124250deb754cf6b4e0b5817c651e6b60b91fd",
+    "public/media/dynamo-optimizer-cleanup/resume-ownership.svg": "da4593daeaca8a1faefe725d064e90ab80e88fee1a42c9057ec62ef2f8cf5a11",
+    "public/media/dynamo-optimizer-cleanup/reference-cleanup.svg": "f555d7cbfd5121f237169ce027f7ff85f74ea308b85e0e17704900e36d766e18",
+    "public/media/dynamo-optimizer-cleanup/shared-lifetime.svg": "c498d8bee9bea0127e4303f9bc842c9f04cd3b660df2b1618989bf1689bb7df4",
+    "src/pages/blog/dynamo-optimizer-cleanup.md": "c13ce90909fc3bf340b32cdb79c8c7ef0317d964f1f31c550fe918487ae3dc80"
   }
 }
