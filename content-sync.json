@@ -3,8 +3,6 @@
   "files": {
     "public/media/a-portable-development-home/development-home.svg": "07f195f2a84345d77cad4575c38936705ae48ece65494eb5278ce64481e7f463",
     "src/pages/blog/a-portable-development-home.md": "aa3f7f078481c7b49fc2aaf70c6918b34236248b910a611b30167407d4515795",
-    "public/media/choose-skills-for-real-work/skill-map.svg": "e915b6a286ead1157b6c25f2a29647ef3adbd5d7751e848cd3b9e511bf6bcfd5",
-    "src/pages/blog/choose-skills-for-real-work.md": "a97f11b2e81fa2563935dc0524af4454691e5e7fec73ddc10a2adddebc893f60",
     "src/data/skills.json": "07771f80215bae0bede2a47c632943f79a81e86707dcea19796f023dc4a0ef94"
   }
 }
