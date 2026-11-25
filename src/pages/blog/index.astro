@@ -3,7 +3,16 @@ import Shell from '../../layouts/Shell.astro';
 import {posts, dateLabel} from '../../lib/posts';
 const tags = [...new Set(posts.flatMap(p => p.tags))];
 ---
-<Shell title="文章 · Runze Zhang" active="blog"><section class="page-intro wrap"><p class="eyebrow">THE NOTEBOOK</p><h1>开发手记</h1><p>从一个具体问题出发，写下过程、证据和能复用的做法。</p></section><section class="wrap archive"><label class="search-box"><span>搜索文章</span><input type="search" id="search" placeholder="试试 Skill、迁移、工作记录……" autocomplete="off" /></label><div class="tag-filter" aria-label="按标签筛选"><button class="selected" data-tag="" aria-pressed="true">全部</button>{tags.map(tag => <button data-tag={tag} aria-pressed="false">{tag}</button>)}</div><p class="result-count" id="result-count" aria-live="polite">共 {posts.length} 篇文章</p><div class="post-rows">{posts.map(post => <a class="post-row searchable" href={post.url} data-search={`${post.title} ${post.description} ${post.tags.join(' ')}`.toLowerCase()} data-tags={JSON.stringify(post.tags)}><div class="post-date"><time datetime={post.date}>{dateLabel(post.date)}</time><span>{post.category}</span></div><div class="post-row-body"><h2>{post.title}</h2><p>{post.description}</p><div class="tags">{post.tags.map((tag: string) => <span>{tag}</span>)}</div></div></a>)}</div><p id="empty-state" hidden>没有找到匹配的文章，换个关键词试试。</p></section></Shell>
+<Shell title="文章 · Runze Zhang" description="开发、排障，以及把工具用顺手的过程。" active="blog">
+  <section class="page-intro wrap"><p class="eyebrow">开发手记</p><h1>文章</h1><p>开发、排障，还有把工具用顺手的过程。</p></section>
+  <section class="wrap archive">
+    <label class="search-box"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg><span class="visually-hidden">搜索文章</span><input type="search" id="search" placeholder="搜索标题、简介或标签" autocomplete="off" /></label>
+    <div class="tag-filter" aria-label="按标签筛选"><button class="selected" data-tag="" aria-pressed="true">全部</button>{tags.map(tag => <button data-tag={tag} aria-pressed="false">{tag}</button>)}</div>
+    <p class="result-count" id="result-count" aria-live="polite">共 {posts.length} 篇文章</p>
+    <div class="post-rows">{posts.map(post => <a class="post-row searchable" href={post.url} data-search={`${post.title} ${post.description} ${post.tags.join(' ')}`.toLowerCase()} data-tags={JSON.stringify(post.tags)}><div class="post-date"><time datetime={post.date}>{dateLabel(post.date)}</time><span>{post.category}</span></div><div class="post-row-body"><h2>{post.title}</h2><p>{post.description}</p><div class="tags">{post.tags.map((tag: string) => <span>{tag}</span>)}</div></div></a>)}</div>
+    <p id="empty-state" hidden>没有找到文章，换个词试试。</p>
+  </section>
+</Shell>
 <script>
   let selected = '';
   const input = document.querySelector<HTMLInputElement>('#search')!;

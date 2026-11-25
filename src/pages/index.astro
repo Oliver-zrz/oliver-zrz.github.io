@@ -3,18 +3,30 @@ import Shell from '../layouts/Shell.astro';
 import {posts, dateLabel} from '../lib/posts';
 ---
 <Shell>
-  <section class="hero wrap">
-    <div class="hero-copy"><p class="eyebrow">代码 · 工具 · 工作里的发现</p><h1>写代码，<br />也把问题<span class="accent">讲清楚。</span></h1><p class="hero-intro">这里记录我怎样搭建环境、组织工具、排查问题。<br class="desktop" />留住判断的依据，也留住下一次能直接用的做法。</p><div class="hero-actions"><a class="button" href="/blog/">阅读开发手记</a><a class="quiet-link" href="/toolbox/">看看我的工具箱</a></div><p class="hero-footnote">Runze Zhang <span>／</span> Personal engineering notebook</p></div>
-    <div class="hero-diagram">
-      <div class="diagram-top"><span>我的工作如何留下来</span><span class="mono">WORKFLOW</span></div>
-      <div class="flow-node flow-primary"><span class="node-icon">{ }</span><strong>解决问题</strong></div>
-      <div class="flow-connector"></div>
-      <div class="flow-node"><span class="node-icon">≡</span><strong>留下图文</strong></div>
-      <div class="flow-connector"></div>
-      <div class="flow-node"><span class="node-icon">◇</span><strong>形成 blog</strong></div>
-      <div class="diagram-bottom"><span>私有工作区</span><span class="boundary-line"></span><span>公开博客</span></div>
+  <section class="hero-stage"><div class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Runze Zhang 的开发手记</p>
+      <h1>写在<span class="hero-highlight">代码</span>之后<span class="accent">。</span></h1>
+      <p class="hero-intro">开发、排障、搭环境。<br />写下当时的判断和试过的办法，免得下次又从头找起。</p>
+      <div class="hero-actions"><a class="button" href="/blog/">读文章</a><a class="quiet-link" href="/about/">关于我</a></div>
     </div>
+    <div class="hero-diagram">
+      <p class="diagram-top">一篇文章的来处</p>
+      <div class="flow-path" role="list" aria-label="工作与记录的顺序">
+        <div class="flow-node flow-primary" role="listitem"><span class="node-icon" aria-hidden="true">&#123; &#125;</span><strong>解决问题</strong></div>
+        <div class="flow-connector" aria-hidden="true"></div>
+        <div class="flow-node" role="listitem"><span class="node-icon" aria-hidden="true">≡</span><strong>留下图文</strong></div>
+        <div class="flow-connector" aria-hidden="true"></div>
+        <div class="flow-node" role="listitem"><span class="node-icon" aria-hidden="true">◇</span><strong>形成 blog</strong></div>
+      </div>
+    </div>
+  </div></section>
+  <section class="latest wrap" aria-labelledby="latest-title">
+    <div class="section-heading"><h2 id="latest-title">最近的文章</h2><a href="/blog/">文章目录</a></div>
+    <div class="post-rows">{posts.map(post => <a class="post-row" href={post.url}><div class="post-date"><time datetime={post.date}>{dateLabel(post.date)}</time><span>{post.category}</span></div><div class="post-row-body"><h3>{post.title}</h3><p>{post.description}</p><div class="tags">{post.tags.map((tag: string) => <span>{tag}</span>)}</div></div></a>)}</div>
   </section>
-  <section class="latest wrap"><div class="section-heading"><div><p class="eyebrow">NOTEBOOK</p><h2>最近写下的</h2></div><a href="/blog/">所有文章</a></div><div class="post-rows">{posts.map((post, index) => <a class="post-row" href={post.url}><div class="post-date"><time datetime={post.date}>{dateLabel(post.date)}</time><span>{post.category}</span></div><div class="post-row-body"><h3>{post.title}</h3><p>{post.description}</p><div class="tags">{post.tags.map((tag: string) => <span>{tag}</span>)}</div></div><span class="row-mark" aria-hidden="true">{index === 0 ? '✳' : '✧'}</span></a>)}</div></section>
-  <section class="workspace-note wrap"><div class="note-label">一个持续整理的工作台</div><p>Skill 是工具，记录是过程。<br />真正想留下的，是<strong>为什么这样做，以及怎么确认它做对了。</strong></p><a href="/about/">关于这份手记</a></section>
+  <section class="home-links wrap" aria-label="站内浏览">
+    <a href="/toolbox/"><span>工具箱</span><p>写作、绘图，以及昇腾开发用到的工具。</p></a>
+    <a href="/about/"><span>关于这里</span><p>这份手记写些什么，为什么记下来。</p></a>
+  </section>
 </Shell>

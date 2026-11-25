@@ -2,14 +2,19 @@
 import Shell from './Shell.astro';
 const dateLabel = (value) => String(value).slice(0, 10).replaceAll('-', '.');
 const post = Astro.props.frontmatter;
+const headings = (Astro.props.headings || []).filter((heading: {depth: number}) => heading.depth === 2);
 ---
 <Shell title={`${post.title} · Runze Zhang`} description={post.description} active="blog">
-  <article class="article wrap-narrow">
-    <a class="breadcrumb" href="/blog/">所有文章</a>
+  <div class="article-shell">
+  <article class="article">
+    <a class="breadcrumb" href="/blog/">文章目录</a>
     <div class="eyebrow">{post.category} <span>／</span> <time datetime={post.date}>{dateLabel(post.date)}</time></div>
     <h1>{post.title}</h1><p class="article-deck">{post.description}</p>
     <div class="article-byline"><span class="author-avatar">R</span><span>Runze Zhang</span><div class="tags">{post.tags.map((tag: string) => <span>{tag}</span>)}</div></div>
+    {headings.length > 1 && <details class="mobile-toc"><summary>文章目录</summary><ol>{headings.map((heading: {slug: string; text: string}) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol></details>}
     <div class="prose"><slot /></div>
-    <aside class="article-end"><strong>记录到这里，工作还会继续。</strong><p>文中的判断以所列验证为边界。发现更好的做法，会继续补充到这份手记。</p><a href="https://github.com/Oliver-zrz/oliver-zrz.github.io">查看网站源代码</a></aside>
+    <div class="article-end"><a href="/blog/">回到文章目录</a><a href="/rss.xml">订阅 RSS</a></div>
   </article>
+  {headings.length > 1 && <aside class="article-toc"><nav aria-label="文章目录"><p>目录</p><ol>{headings.map((heading: {slug: string; text: string}) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol></nav></aside>}
+  </div>
 </Shell>

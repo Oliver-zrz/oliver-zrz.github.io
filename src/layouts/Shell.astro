@@ -1,40 +1,52 @@
 ---
 import '../styles/global.css';
-const {title = 'Runze Zhang · 开发手记', description = '记录开发过程、问题排查与可复用的经验。', active = ''} = Astro.props;
+const {title = 'Runze Zhang · 开发手记', description = 'Runze Zhang 的开发、排障与环境配置笔记。', active = ''} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} /><meta name="theme-color" content="#f8f9fc" />
+    <meta name="description" content={description} /><meta name="theme-color" content="#e8f4ff" />
     <meta property="og:title" content={title} /><meta property="og:description" content={description} />
     <meta property="og:type" content="website" /><meta property="og:url" content={canonical} />
     <link rel="canonical" href={canonical} /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="Runze Zhang · 开发手记" href="/rss.xml" />
     <title>{title}</title>
     <script is:inline>
-      try { document.documentElement.dataset.theme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch {}
+      try {
+        const saved = localStorage.getItem('theme');
+        document.documentElement.dataset.theme = saved === 'light' || saved === 'dark' ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      } catch {}
     </script>
   </head>
   <body>
     <a class="skip" href="#main">跳到正文</a>
-    <header class="site-header wrap">
-      <a href="/" class="wordmark" aria-label="Runze Zhang 首页"><span class="monogram">R.</span><span>RUNZE ZHANG<small>开发手记</small></span></a>
+    <div class="header-band"><header class="site-header wrap">
+      <a href="/" class="wordmark" aria-label="Runze Zhang 首页"><span class="monogram" aria-hidden="true">R.</span><span>Runze Zhang<small>开发手记</small></span></a>
       <nav aria-label="主导航">
         <a href="/blog/" aria-current={active === 'blog' ? 'page' : undefined}>文章</a>
         <a href="/toolbox/" aria-current={active === 'toolbox' ? 'page' : undefined}>工具箱</a>
         <a href="/about/" aria-current={active === 'about' ? 'page' : undefined}>关于</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="切换明暗主题" title="切换明暗主题" aria-pressed="false"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" /><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" /></svg></button>
       </nav>
-    </header>
+    </header></div>
     <main id="main"><slot /></main>
-    <footer class="site-footer wrap"><div><strong>Runze Zhang</strong><p>把做过的事，写成下一次用得上的经验。</p></div><div class="footer-links"><a href="https://github.com/Oliver-zrz">GitHub</a><a href="/rss.xml">RSS</a><span>© {new Date().getFullYear()}</span></div></footer>
+    <footer class="site-footer wrap"><div><strong>Runze Zhang</strong><p>开发与排障笔记</p></div><div class="footer-links"><a href="https://github.com/Oliver-zrz">GitHub</a><a href="/rss.xml">RSS</a><span>© {new Date().getFullYear()}</span></div></footer>
     <script>
-      document.querySelector('#theme-toggle')?.addEventListener('click', () => {
+      const button = document.querySelector('#theme-toggle');
+      const reflectTheme = () => {
+        const dark = document.documentElement.dataset.theme === 'dark';
+        button?.setAttribute('aria-pressed', String(dark));
+        button?.setAttribute('aria-label', dark ? '切换到浅色主题' : '切换到深色主题');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#1a2941' : '#e8f4ff');
+      };
+      reflectTheme();
+      button?.addEventListener('click', () => {
         const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
         document.documentElement.dataset.theme = theme;
         try { localStorage.setItem('theme', theme); } catch {}
+        reflectTheme();
       });
     </script>
   </body>

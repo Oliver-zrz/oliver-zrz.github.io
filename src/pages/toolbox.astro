@@ -1,5 +1,17 @@
 ---
 import Shell from '../layouts/Shell.astro';
 import skills from '../data/skills.json';
+import {toolboxGroups} from '../data/toolbox';
+const installed = new Set(skills.map(skill => skill.name));
+const described = new Set(toolboxGroups.flatMap(group => group.tools.map(tool => tool.name)));
+const missing = skills.filter(skill => !described.has(skill.name));
+if (missing.length) throw new Error(`请为新增工具补充网站文案：${missing.map(skill => skill.name).join(', ')}`);
+const groups = toolboxGroups.map(group => ({...group, tools: group.tools.filter(tool => installed.has(tool.name))})).filter(group => group.tools.length);
 ---
-<Shell title="工具箱 · Runze Zhang" active="toolbox"><section class="page-intro wrap"><p class="eyebrow">A PERSONAL TOOLBOX</p><h1>工具有分工，<br />经验有去处。</h1><p>这里是我正在整理的 {skills.length} 个用户级 Skill。记录其用途，按任务选择，不追求把所有工具都装一遍。</p></section><section class="wrap toolbox"><div class="toolbox-note"><strong>这页公开能力目录。</strong><p>完整配置、环境约定和工作底稿保存在私有仓库。第三方 Skill 的实际使用仍需匹配对应环境与许可证。</p></div><div class="skill-list">{skills.map(skill => <div class="skill-item"><code>{skill.name}</code><p>{skill.description}</p></div>)}</div></section></Shell>
+<Shell title="工具箱 · Runze Zhang" description="写作、绘图，以及昇腾开发相关的工具目录。" active="toolbox">
+  <section class="page-intro wrap"><p class="eyebrow">手边的工具</p><h1>工具箱</h1><p>写作、绘图，以及昇腾开发相关的 {skills.length} 个 Skill。按用途放在这里，方便查找。</p></section>
+  <div class="toolbox-layout wrap">
+    <aside class="tool-index"><nav aria-label="工具分类">{groups.map(group => <a href={`#${group.id}`}>{group.title}<span>{group.tools.length}</span></a>)}</nav><p>涉及硬件的工具，需要在对应环境中使用。</p></aside>
+    <div class="toolbox">{groups.map(group => <section class="tool-group" id={group.id} aria-labelledby={`${group.id}-title`}><header><h2 id={`${group.id}-title`}>{group.title}</h2><p>{group.description}</p></header><div class="skill-list">{group.tools.map(tool => <div class="skill-item"><h3>{tool.title}</h3><p>{tool.summary}</p><code>{tool.name}</code></div>)}</div></section>)}</div>
+  </div>
+</Shell>

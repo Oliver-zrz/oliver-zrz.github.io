@@ -1,4 +1,20 @@
 ---
 import Shell from '../layouts/Shell.astro';
 ---
-<Shell title="关于 · Runze Zhang" active="about"><section class="page-intro wrap-narrow"><p class="eyebrow">ABOUT THIS NOTEBOOK</p><h1>你好，我是<br /><span class="accent">Runze Zhang。</span></h1><p>我想把每一次开发和问题解决，变成自己能找得到、别人也读得懂的记录。</p></section><section class="wrap-narrow prose about-prose"><h2>这份手记记录什么</h2><p>开发环境怎样搭起来，工具怎样配合，一个错误怎样从现象一步步缩小到原因。比起只留下最后一条命令，我更希望保留做判断时的依据。</p><h2>工作与文章，各有一个位置</h2><p>私有的 dev-home 保存 Skill、Agent 约定和工作记录；这个网站保存适合公开的文章和图解。文章从工作记录整理而来，私有底稿不会整份搬到网站。</p><h2>怎样写</h2><p>能直说就直说。说明做了什么，也说明还没验证什么。需要一张图把关系讲清楚时，就画图；一段话足够时，就写一段话。</p><p>这里会随着实际工作逐步积累。你可以通过 RSS 订阅更新，也可以在 GitHub 查看网站的源码。</p><div class="hero-actions"><a class="button" href="https://github.com/Oliver-zrz">GitHub</a><a class="quiet-link" href="/rss.xml">订阅 RSS</a></div></section></Shell>
+<Shell title="关于 · Runze Zhang" description="关于 Runze Zhang 和这份开发手记。" active="about">
+  <section class="page-intro wrap-narrow">
+    <p class="eyebrow">关于</p>
+    <h1>你好，我是<br /><span class="accent">Runze Zhang。</span></h1>
+    <p>这里是我的开发手记。写代码时遇到的问题，搭环境时记下的细节，都慢慢收在这里。</p>
+  </section>
+  <section class="wrap-narrow prose about-prose">
+    <h2>为什么记下来</h2>
+    <p>问题解决后，最容易忘的是中间的判断：为什么改这个参数，哪条线索没走通，又是怎样确认改动有效的。我想把这些经过留下来，下次遇见时有处可查。</p>
+    <h2>这里写什么</h2>
+    <p>开发环境、工具配置、昇腾相关的开发与排障，也包括这套个人工作区的搭建。文章从实际工作里整理；试过的办法、验证的结果、暂时没弄清的地方，都会尽量交代。</p>
+    <h2>站点小记</h2>
+    <p>网站用 Astro 搭建，由 GitHub Pages 托管。文章和配图从私有工作区整理后发布，网站源码公开。</p>
+    <p>如果想继续读，可以翻翻<a href="/blog/">文章目录</a>，或通过 <a href="/rss.xml">RSS</a> 订阅更新。</p>
+    <div class="about-links"><a href="https://github.com/Oliver-zrz">我的 GitHub</a><a href="https://github.com/Oliver-zrz/oliver-zrz.github.io">网站源码</a></div>
+  </section>
+</Shell>
